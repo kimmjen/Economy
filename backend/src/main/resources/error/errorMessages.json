@@ -1,0 +1,14 @@
+{
+  "ResourceNotFoundException": {
+    "errorCode": "404",
+    "errorMessage": "Resource not found"
+  },
+  "ValidationException": {
+    "errorCode": "400",
+    "errorMessage": "Validation failed"
+  },
+  "GeneralException": {
+    "errorCode": "500",
+    "errorMessage": "An unexpected error occurred"
+  }
+}
