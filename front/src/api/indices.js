@@ -1,45 +1,31 @@
-import { useState } from 'react';
-import {BanknotesIcon, ChartBarIcon, UserPlusIcon, UsersIcon} from "@heroicons/react/24/solid/index.js";
+import { useState, useEffect } from 'react';
+import { BanknotesIcon, ChartBarIcon, UserPlusIcon, UsersIcon } from "@heroicons/react/24/solid";
+import {useCommon} from "@/api/common.js";
+import {useDate} from "@/context/DateContext.jsx";
 
 // 날짜 선택 및 서버 상태 처리 훅
 export const useIndices = () => {
-    const today = new Date().toISOString().split('T')[0];  // 'YYYY-MM-DD' 형식의 현재 날짜
-    const [date, setDate] = useState(today);
-    const [status, setStatus] = useState('');
+
+    const { date, handleDateChange } = useDate();  // date와 handleDateChange를 가져옴
+    const [indicesData, setIndicesData] = useState([]);  // 주가 지수 데이터를 위한 상태
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [indicesData, setIndicesData] = useState([]);  // 주가 지수 데이터를 위한 상태
 
-    // 날짜 변경 핸들러
-    const handleDateChange = (event) => {
-        setDate(event.target.value);
-    };
 
-    // 날짜 기반 상태 데이터를 가져오는 함수
-    const fetchStatusByDate = async () => {
-        setLoading(true);
-        setError(null);
-        try {
-            const response = await fetch(`http://localhost:8080/api/date?date=${date}`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch status');
-            }
-            const data = await response.text();
-            setStatus(data);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
+
 
     // 날짜 기반 주가 지수 데이터를 가져오는 함수
     const fetchIndicesData = async () => {
         setLoading(true);
         setError(null);
+        console.log('indicesData', date);
         try {
-            const response = await fetch(`http://localhost:8080/api/date?date=${date}`);
+            const response = await fetch(`http://localhost:8080/api/indices?date=${date}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
             const data = await response.json();
+            console.log('Fetched data:', data);
 
             // 데이터를 포맷에 맞게 변환
             const formattedData = [
@@ -98,14 +84,19 @@ export const useIndices = () => {
         }
     };
 
+    // 날짜가 변경되면 주가 데이터를 가져옴
+    useEffect(() => {
+        if (date) {
+            fetchIndicesData();  // 날짜가 변경되면 데이터를 가져옴
+        }
+    }, [date]);
+
     return {
         date,
-        status,
         indicesData,
         loading,
         error,
-        handleDateChange,
-        fetchStatusByDate,
         fetchIndicesData,
+        handleDateChange,
     };
 };

@@ -1,12 +1,10 @@
-import {useMaterialTailwindController, setOpenSidenav} from "@/context/index.jsx";
-import {useLocation, Link} from "react-router-dom";
+import { useMaterialTailwindController, setOpenSidenav } from "@/context/index.jsx";
+import { useLocation, Link } from "react-router-dom";
 import {
     Navbar,
     Typography,
     Button,
     IconButton,
-    Breadcrumbs,
-    Input,
     Menu,
     MenuHandler,
     MenuList,
@@ -20,16 +18,27 @@ import {
     ClockIcon,
     CreditCardIcon,
     Bars3Icon,
-    LinkIcon, CheckCircleIcon, XCircleIcon,
+    CheckCircleIcon,
+    XCircleIcon,
 } from "@heroicons/react/24/solid";
-import {useStatus} from '@/api/status';  // status.js에서 훅을 가져옴
+import { useStatus } from '@/api/status';
+import Datepicker from "@/components/datepicker/Datepicker.jsx";
+import { useIndices } from "@/api/indices.js";
+import { useEffect } from "react";
+
 export const DashboardNavbar = () => {
     const [controller, dispatch] = useMaterialTailwindController();
-    const {fixedNavbar, openSidenav} = controller;
-    const {status, connected, loading, error} = useStatus();
+    const { fixedNavbar, openSidenav } = controller;
+    const { status, connected, loading, error } = useStatus();
+    const { date, handleDateChange, fetchIndicesData } = useIndices();
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+    // 날짜 변경 시 자동으로 데이터 가져오기
+    // useEffect(() => {
+    //     if (date) {
+    //         fetchIndicesData();  // 날짜가 변경될 때마다 데이터를 가져옴
+    //     }
+    // }, [date]);
+
     return (
         <Navbar
             color={fixedNavbar ? "white" : "transparent"}
@@ -60,7 +69,7 @@ export const DashboardNavbar = () => {
                 </div>
                 <div className="flex items-center">
                     <div className="mr-auto md:mr-4 md:w-56">
-                        <Input label="Search"/>
+                        {/*<Datepicker date={date} handleDateChange={handleDateChange}/> /!* Datepicker 컴포넌트 사용 *!/*/}
                     </div>
                     <IconButton
                         variant="text"
@@ -168,7 +177,6 @@ export const DashboardNavbar = () => {
                     </Menu>
                 </div>
             </div>
-
         </Navbar>
-    )
-}
+    );
+};

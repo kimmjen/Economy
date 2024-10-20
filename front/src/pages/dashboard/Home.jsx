@@ -1,68 +1,87 @@
-import React, {useEffect, useState} from "react";
-import {
-    Typography,
-    Card,
-    CardHeader,
-    CardBody,
-    IconButton,
-    Menu,
-    MenuHandler,
-    MenuList,
-    MenuItem,
-    Avatar,
-    Tooltip,
-    Progress,
-} from "@material-tailwind/react";
+import React, {useEffect} from "react";
+import {Typography} from "@material-tailwind/react";
 import {StatisticsCard} from "@/widgets/cards";
-import { useIndices } from '@/api/indices';  // indices.js에서 훅을 불러옴
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs from 'dayjs';
+import {useIndices} from '@/api/indices';
+import {useBonds} from '@/api/bonds';
+import Datepicker from "@/components/datepicker/Datepicker";
+import {useDate} from "@/context/DateContext.jsx";
+import {useGold} from "@/api/gold.js";
+import {useDollar} from "@/api/dollar.js";
 
 export const Home = () => {
-    const {
-        date,
-        status,
-        indicesData,
-        loading,
-        error,
-        handleDateChange,
-        fetchStatusByDate,
-        fetchIndicesData,
-    } = useIndices();
+    const {date, handleDateChange} = useDate();  // date와 handleDateChange를 가져옴
+    const {indicesData, fetchIndicesData} = useIndices();
+    const {bondsData, fetchBondsData} = useBonds();
+    const {goldData, fetchGoldData} = useGold();
+    const {dollarData, fetchDollarData} = useDollar()
+
     useEffect(() => {
-        if (date) {
-            fetchIndicesData();  // 날짜가 변경되면 주가 지수 데이터를 가져옴
-        }
+        fetchIndicesData();  // 날짜가 변경되면 주가 지수 데이터를 가져옴
+        fetchBondsData();    // 국채 데이터를 가져옴
+        fetchGoldData()
+        fetchDollarData()
     }, [date]);
+
+
     return (
         <div>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker
-                    label="Select a date"
-                    value={dayjs(date)}  // date 값을 dayjs 객체로 변환하여 설정
-                    onChange={(newValue) => {
-                        handleDateChange({ target: { value: newValue.format('YYYY-MM-DD') } });  // 날짜를 'YYYY-MM-DD' 형식으로 변환하여 handleDateChange에 전달
-                    }}
-                    renderInput={(params) => <input {...params} />}
-                />
-            </LocalizationProvider>
-
-            <div className="mt-12">
+            <div className="flex justify-between">
+                <div>
+                    <Datepicker date={date} handleDateChange={handleDateChange}/> {/* 공통 Datepicker */}
+                </div>
+            </div>
+            <div className="mt-4">
                 <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
                     {indicesData.map(({icon, title, footer, ...rest}) => (
                         <StatisticsCard
                             key={title}
                             {...rest}
                             title={title}
-                            icon={React.createElement(icon, {
-                                className: "w-6 h-6 text-white",
-                            })}
+                            icon={React.createElement(icon, {className: "w-6 h-6 text-white"})}
                             footer={
                                 <Typography className="font-normal text-blue-gray-600">
-                                    <strong className={footer.color}>{footer.value}</strong>
-                                    &nbsp;{footer.label}
+                                    <strong className={footer.color}>{footer.value}</strong>&nbsp;{footer.label}
+                                </Typography>
+                            }
+                        />
+                    ))}
+                    {bondsData.map(({icon, title, footer, ...rest}) => (
+                        <StatisticsCard
+                            key={title}
+                            {...rest}
+                            title={title}
+                            icon={React.createElement(icon, {className: "w-6 h-6 text-white"})}
+                            footer={
+                                <Typography className="font-normal text-blue-gray-600">
+                                    <strong className={footer.color}>{footer.value}</strong>&nbsp;{footer.label}
+                                </Typography>
+                            }
+                        />
+                    ))}
+
+                    {dollarData && Array.isArray(dollarData) && dollarData.map(({icon, title, footer, ...rest}) => (
+                        <StatisticsCard
+                            key={title}
+                            {...rest}
+                            title={title}
+                            icon={React.createElement(icon, {className: "w-6 h-6 text-white"})}
+                            footer={
+                                <Typography className="font-normal text-blue-gray-600">
+                                    <strong className={footer.color}>{footer.value}</strong>&nbsp;{footer.label}
+                                </Typography>
+                            }
+                        />
+                    ))}
+
+                    {goldData && Array.isArray(goldData) && goldData.map(({icon, title, footer, ...rest}) => (
+                        <StatisticsCard
+                            key={title}
+                            {...rest}
+                            title={title}
+                            icon={React.createElement(icon, {className: "w-6 h-6 text-white"})}
+                            footer={
+                                <Typography className="font-normal text-blue-gray-600">
+                                    <strong className={footer.color}>{footer.value}</strong>&nbsp;{footer.label}
                                 </Typography>
                             }
                         />

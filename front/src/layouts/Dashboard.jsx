@@ -3,6 +3,7 @@ import {Sidenav} from "@/widgets/layout/Sidenav.jsx";
 import {useMaterialTailwindController} from "@/context/index.jsx";
 import routes from "@/routes/Routes.jsx";
 import {DashboardNavbar} from "@/widgets/layout/DashboardNavbar.jsx";
+import {DateProvider} from "@/context/DateContext.jsx";
 
 export function Dashboard() {
 
@@ -18,16 +19,18 @@ export function Dashboard() {
                 }
             />
             <div className="p-4 xl:ml-80">
-                <DashboardNavbar/>
-                <Routes>
-                    {routes.map(
-                        ({layout, pages}) =>
-                            layout === "dashboard" &&
-                            pages.map(({path, element}) => (
-                                <Route exact path={path} element={element}/>
-                            ))
-                    )}
-                </Routes>
+                <DateProvider>
+                    <DashboardNavbar/>
+                    <Routes>
+                        {routes.map(
+                            ({layout, pages}) =>
+                                layout === "dashboard" &&
+                                pages.map(({path, element}) => (
+                                    <Route exact path={path} element={element}/>
+                                ))
+                        )}
+                    </Routes>
+                </DateProvider>
             </div>
         </div>
     );
