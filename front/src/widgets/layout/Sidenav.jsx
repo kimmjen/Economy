@@ -28,7 +28,7 @@ export const Sidenav = ({brandImg, brandName, routes}) => {
                         variant="h6"
                         color={sidenavType === "dark" ? "white" : "blue-gray"}
                     >
-                        {brandName}
+                        Economy
                     </Typography>
                 </Link>
                 <IconButton
@@ -43,7 +43,7 @@ export const Sidenav = ({brandImg, brandName, routes}) => {
                 </IconButton>
             </div>
             <div className="m-4">
-                {routes.map(({layout, title, pages}, key) => (
+                {routes.map(({layout, title, pages=pages.children}, key) => (
                     <ul key={key} className="mb-4 flex flex-col gap-1">
                         {title && (
                             <li className="mx-3.5 mt-4 mb-2">

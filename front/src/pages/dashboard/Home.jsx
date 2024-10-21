@@ -22,6 +22,8 @@ export const Home = () => {
         fetchDollarData()
     }, [date]);
 
+    // 모든 데이터가 없는 경우 처리
+    const isEmptyData = !indicesData.length && !bondsData.length && !dollarData?.length && !goldData?.length;
 
     return (
         <div>
@@ -31,62 +33,70 @@ export const Home = () => {
                 </div>
             </div>
             <div className="mt-4">
-                <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-                    {indicesData.map(({icon, title, footer, ...rest}) => (
-                        <StatisticsCard
-                            key={title}
-                            {...rest}
-                            title={title}
-                            icon={React.createElement(icon, {className: "w-6 h-6 text-white"})}
-                            footer={
-                                <Typography className="font-normal text-blue-gray-600">
-                                    <strong className={footer.color}>{footer.value}</strong>&nbsp;{footer.label}
-                                </Typography>
-                            }
-                        />
-                    ))}
-                    {bondsData.map(({icon, title, footer, ...rest}) => (
-                        <StatisticsCard
-                            key={title}
-                            {...rest}
-                            title={title}
-                            icon={React.createElement(icon, {className: "w-6 h-6 text-white"})}
-                            footer={
-                                <Typography className="font-normal text-blue-gray-600">
-                                    <strong className={footer.color}>{footer.value}</strong>&nbsp;{footer.label}
-                                </Typography>
-                            }
-                        />
-                    ))}
+                {/* 데이터가 없을 경우 경고 메시지 표시 */}
+                {isEmptyData ? (
+                    <Typography className="text-red-500 text-center">
+                        미국 증시가 아직 시작되지 않았거나, 데이터가 존재하지 않습니다.
+                    </Typography>
+                ) : (
+                    <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
+                        {indicesData.map(({icon, title, footer, ...rest}) => (
+                            <StatisticsCard
+                                key={title}
+                                {...rest}
+                                title={title}
+                                icon={React.createElement(icon, {className: "w-6 h-6 text-white"})}
+                                footer={
+                                    <Typography className="font-normal text-blue-gray-600">
+                                        <strong className={footer.color}>{footer.value}</strong>&nbsp;{footer.label}
+                                    </Typography>
+                                }
+                            />
+                        ))}
 
-                    {dollarData && Array.isArray(dollarData) && dollarData.map(({icon, title, footer, ...rest}) => (
-                        <StatisticsCard
-                            key={title}
-                            {...rest}
-                            title={title}
-                            icon={React.createElement(icon, {className: "w-6 h-6 text-white"})}
-                            footer={
-                                <Typography className="font-normal text-blue-gray-600">
-                                    <strong className={footer.color}>{footer.value}</strong>&nbsp;{footer.label}
-                                </Typography>
-                            }
-                        />
-                    ))}
+                        {bondsData.map(({icon, title, footer, ...rest}) => (
+                            <StatisticsCard
+                                key={title}
+                                {...rest}
+                                title={title}
+                                icon={React.createElement(icon, {className: "w-6 h-6 text-white"})}
+                                footer={
+                                    <Typography className="font-normal text-blue-gray-600">
+                                        <strong className={footer.color}>{footer.value}</strong>&nbsp;{footer.label}
+                                    </Typography>
+                                }
+                            />
+                        ))}
 
-                    {goldData && Array.isArray(goldData) && goldData.map(({icon, title, footer, ...rest}) => (
-                        <StatisticsCard
-                            key={title}
-                            {...rest}
-                            title={title}
-                            icon={React.createElement(icon, {className: "w-6 h-6 text-white"})}
-                            footer={
-                                <Typography className="font-normal text-blue-gray-600">
-                                    <strong className={footer.color}>{footer.value}</strong>&nbsp;{footer.label}
-                                </Typography>
-                            }
-                        />
-                    ))}
-                </div>
+                        {dollarData && Array.isArray(dollarData) && dollarData.map(({icon, title, footer, ...rest}) => (
+                            <StatisticsCard
+                                key={title}
+                                {...rest}
+                                title={title}
+                                icon={React.createElement(icon, {className: "w-6 h-6 text-white"})}
+                                footer={
+                                    <Typography className="font-normal text-blue-gray-600">
+                                        <strong className={footer.color}>{footer.value}</strong>&nbsp;{footer.label}
+                                    </Typography>
+                                }
+                            />
+                        ))}
+
+                        {goldData && Array.isArray(goldData) && goldData.map(({icon, title, footer, ...rest}) => (
+                            <StatisticsCard
+                                key={title}
+                                {...rest}
+                                title={title}
+                                icon={React.createElement(icon, {className: "w-6 h-6 text-white"})}
+                                footer={
+                                    <Typography className="font-normal text-blue-gray-600">
+                                        <strong className={footer.color}>{footer.value}</strong>&nbsp;{footer.label}
+                                    </Typography>
+                                }
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );

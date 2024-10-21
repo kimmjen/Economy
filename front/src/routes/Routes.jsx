@@ -1,15 +1,11 @@
 import {
     HomeIcon,
-    // UserCircleIcon,
-    // TableCellsIcon,
-    // InformationCircleIcon,
     ServerStackIcon,
     RectangleStackIcon,
 } from "@heroicons/react/24/solid";
-import {Home,
-    // Profile, Tables, Notifications, Editor
-} from "@/pages/dashboard";
-import { SignIn, SignUp } from "@/pages/auth";
+import {Home} from "@/pages/dashboard";
+import {SignIn, SignUp} from "@/pages/auth";
+import {EconomicIndicators} from "@/pages/dashboard/EconomicIndicators.jsx";
 
 const icon = {
     className: "w-5 h-5 text-inherit",
@@ -24,31 +20,29 @@ export const routes = [
                 name: "dashboard",
                 path: "/home",
                 element: <Home />,
+                isDropdown: true,  // Enable dropdown for dashboard
+                children: [
+                    {
+                        name: "sp500",
+                        path: "/sp500",
+                    },
+                    {
+                        name: "nasdaq100",
+                        path: "/nasdaq100",
+                    },
+                    {
+                        name: "dowjones",
+                        path: "/dowjones",
+                    },
+                ],
             },
-            // {
-            //     icon: <UserCircleIcon {...icon} />,
-            //     name: "profile",
-            //     path: "/profile",
-            //     element: <Profile />,
-            // },
-            // {
-            //     icon: <TableCellsIcon {...icon} />,
-            //     name: "tables",
-            //     path: "/tables",
-            //     element: <Tables />,
-            // },
-            // {
-            //     icon: <InformationCircleIcon {...icon} />,
-            //     name: "notifications",
-            //     path: "/notifications",
-            //     element: <Notifications />,
-            // },
-            // {
-            //     icon: <InformationCircleIcon {...icon} />,
-            //     name: "editor",
-            //     path: "/editor",
-            //     element: <Editor />,
-            // },
+            {
+                title: "Economic Indicators",
+                layout: "dashboard",
+                name: "economicIndicators",
+                path: "/economicIndicators",
+                element: <EconomicIndicators />,
+            },
         ],
     },
     {
