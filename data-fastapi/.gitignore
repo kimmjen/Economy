@@ -1,2 +1,5 @@
 .idea
 .DS_Store
+# Python bytecode cache directory
+__pycache__/
+*.py[cod]

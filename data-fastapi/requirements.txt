@@ -139,3 +139,4 @@ webencodings==0.5.1
 websocket-client==1.8.0
 wheel==0.41.2
 yfinance==0.2.44
+APScheduler==3.10.4
