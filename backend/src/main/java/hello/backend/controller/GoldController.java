@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/gold")
+@RequestMapping("/api/v1/gold")
 public class GoldController {
 
     private final GoldService goldService;

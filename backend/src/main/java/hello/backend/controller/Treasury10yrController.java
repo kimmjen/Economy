@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/treasury10yr")
+@RequestMapping("/api/v1/treasury10yr")
 public class Treasury10yrController {
 
     private final Treasury10yrService treasury10yrService;

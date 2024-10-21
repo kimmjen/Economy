@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/economic-indicators")
+@RequestMapping("/api/v1/economic-indicators")
 public class EconomicIndicatorsController {
 
     private final EconomicIndicatorsService economicIndicatorsService;

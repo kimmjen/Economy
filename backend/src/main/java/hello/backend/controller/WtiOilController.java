@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/wtioil")
+@RequestMapping("/api/v1/wtioil")
 public class WtiOilController {
 
     private final WtiOilService wtiOilService;

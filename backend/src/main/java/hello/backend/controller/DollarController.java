@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/dollar")
+@RequestMapping("/api/v1/dollar")
 public class DollarController {
 
     private final DollarService dollarService;

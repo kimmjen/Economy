@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/dow")
+@RequestMapping("/api/v1/dow")
 public class DowController {
 
     private final DowService dowService;

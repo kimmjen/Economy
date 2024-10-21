@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/sp500")
+@RequestMapping("/api/v1/sp500")
 public class Sp500Controller {
 
     private final Sp500Service sp500Service;

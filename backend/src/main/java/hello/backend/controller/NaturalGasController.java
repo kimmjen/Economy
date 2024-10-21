@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/natural-gas")
+@RequestMapping("/api/v1/natural-gas")
 public class NaturalGasController {
 
     private final NaturalGasService naturalGasService;

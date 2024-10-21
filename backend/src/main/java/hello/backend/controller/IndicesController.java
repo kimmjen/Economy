@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/indices")
+@RequestMapping("/api/v1/indices")
 public class IndicesController {
 
 //    // US Stock

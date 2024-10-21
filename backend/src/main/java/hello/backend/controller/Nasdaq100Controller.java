@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/nasdaq100")
+@RequestMapping("/api/v1/nasdaq100")
 public class Nasdaq100Controller {
 
     private final Nasdaq100Service nasdaq100Service;

@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/russell2000")
+@RequestMapping("/api/v1/russell2000")
 public class Russell2000Controller {
 
     private final Russell2000Service russell2000Service;
