@@ -24,7 +24,7 @@ import {
 import { useStatus } from '@/api/status';
 import Datepicker from "@/components/datepicker/Datepicker.jsx";
 import { useIndices } from "@/api/indices.js";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 export const DashboardNavbar = () => {
     const [controller, dispatch] = useMaterialTailwindController();
@@ -69,7 +69,7 @@ export const DashboardNavbar = () => {
                 </div>
                 <div className="flex items-center">
                     <div className="mr-auto md:mr-4 md:w-56">
-                        {/*<Datepicker date={date} handleDateChange={handleDateChange}/> /!* Datepicker 컴포넌트 사용 *!/*/}
+                        <Datepicker date={date} handleDateChange={handleDateChange}/> {/* 공통 Datepicker */}
                     </div>
                     <IconButton
                         variant="text"
