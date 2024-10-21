@@ -2,6 +2,7 @@ import {
     HomeIcon,
     ServerStackIcon,
     RectangleStackIcon,
+    ListBulletIcon
 } from "@heroicons/react/24/solid";
 import {Home} from "@/pages/dashboard";
 import {SignIn, SignUp} from "@/pages/auth";
@@ -37,6 +38,7 @@ export const routes = [
                 ],
             },
             {
+                icon: <ListBulletIcon {...icon} />,
                 title: "Economic Indicators",
                 layout: "dashboard",
                 name: "economicIndicators",

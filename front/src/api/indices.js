@@ -10,7 +10,7 @@ export const useIndices = () => {
     const [indicesData, setIndicesData] = useState([]);  // 주가 지수 데이터를 위한 상태
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
+    const url = "http://localhost:8080/api/v1"
 
 
 
@@ -20,7 +20,7 @@ export const useIndices = () => {
         setError(null);
         console.log('indicesData', date);
         try {
-            const response = await fetch(`http://localhost:8080/api/indices?date=${date}`);
+            const response = await fetch(`${url}/indices?date=${date}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }

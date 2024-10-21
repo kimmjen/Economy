@@ -5,12 +5,12 @@ export const useStatus = () => {
     const [connected, setConnected] = useState(false);  // 연결 상태를 저장
     const [loading, setLoading] = useState(true);  // 로딩 상태를 저장
     const [error, setError] = useState(null);  // 에러 상태를 저장
-
+    const url = "http://localhost:8080/api/v1"
     useEffect(() => {
         const fetchStatus = async () => {
             try {
                 // Spring Boot 백엔드의 /api/status로 GET 요청 보내기
-                const response = await fetch('http://localhost:8080/api/status');
+                const response = await fetch(`${url}/status`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch status');
                 }

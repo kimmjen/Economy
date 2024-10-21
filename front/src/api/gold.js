@@ -5,10 +5,11 @@ import {ChartBarIcon} from "@heroicons/react/24/solid";
 export const useGold = () => {
     const {date, handleDateChange} = useDate();  // date와 handleDateChange를 가져옴
     const [goldData, setGoldData] = useState(null);
+    const url = "http://localhost:8080/api/v1"
 
     const fetchGoldData = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/golds?date=${date}`);
+            const response = await fetch(`${url}/golds?date=${date}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }

@@ -6,12 +6,12 @@ import {useDate} from "@/context/DateContext.jsx";
 export const useBonds = () => {
     const { date, handleDateChange } = useDate();  // date와 handleDateChange를 가져옴
     const [bondsData, setBondsData] = useState([]);
-
+    const url = "http://localhost:8080/api/v1"
 
     const fetchBondsData = async () => {
         console.log('bondsData', date);
         try {
-            const response = await fetch(`http://localhost:8080/api/bonds?date=${date}`);
+            const response = await fetch(`${url}/bonds?date=${date}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }
