@@ -5,6 +5,11 @@
 # Economy Dashboard
 
 
+
+https://github.com/user-attachments/assets/d59151c0-4242-4a38-805a-db92a378ce59
+
+
+
 미국 주식 지수, 채권, 달러 지수, 금, 에너지 가격에 대한 최신 정보를 제공하는 금융 데이터 대시보드입니다.
 
 
