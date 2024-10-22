@@ -98,7 +98,7 @@ const EventForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8080/api/economic-indicators', {
+            const response = await fetch('http://localhost:8080/api/v1/economic-indicators', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

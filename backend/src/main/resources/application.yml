@@ -1,25 +1,50 @@
-
 logging:
   level:
     hello.boilerplate: debug
 
 spring:
   application:
-    name:boilerplate
+    name: boilerplate
   datasource:
     url: jdbc:postgresql://localhost:5432/economy
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: 12341234
 
+#  thymeleaf:
+#    prefix: classpath:/static/dist/
+#    suffix: .html
+#    mode: HTML
+#    encoding: UTF-8
+#    check-template-location: true
+#    cache: false
+
   jpa:
     hibernate:
       dd-auto: update
     generate-ddl: false
-    show-sql: true
+    show-sql: false
     properties:
-      '[hibernate.format_sql]': true
+      '[hibernate.format_sql]': false
     open-in-view: false
 
+  web:
+    resources:
+      # 정적 리소스를 제공하는 위치 설정
+      static-locations: classpath:/static/dist, classpath:/META-INF/resources/
+    mvc:
+      pathmatch:
+        matching-strategy: ant_path_matcher  # 경로 매칭에 대한 설정
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher  # 경로 매칭에 대한 설정
+
+# 추가한 datafastapi URL 설정
 datafastapi:
   url: http://localhost:8000
+
+#server:
+#  # 기본 경로를 /eco로 설정하여 모든 프론트엔드 리소스가 /eco 하위에 위치하게 함
+#  servlet:
+#    context-path: /

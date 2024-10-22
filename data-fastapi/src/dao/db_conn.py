@@ -3,7 +3,7 @@ import json
 import psycopg2.extras
 import psycopg2 as pg2
 
-from util.util import ExtendedEnum
+from util.utils import ExtendedEnum
 from aenum import auto
 
 

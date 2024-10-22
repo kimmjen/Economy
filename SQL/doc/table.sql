@@ -133,3 +133,21 @@ create table natural_gas
     volume            bigint           not null,
     change_percentage double precision not null
 );
+
+create table economic_indicators
+(
+    id              serial
+        primary key,
+    event_type      varchar(50),
+    indicator_name  varchar(255),
+    fed_speaker     varchar(100),
+    fed_position    varchar(100),
+    event_date      date,
+    event_time_kst  timestamp,
+    event_time_est  timestamp,
+    indicator_value varchar(50),
+    forecast_value  varchar(50),
+    previous_value  varchar(50),
+    content         text,
+    importance      integer
+);

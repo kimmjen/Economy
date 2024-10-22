@@ -11,6 +11,21 @@ export default defineConfig({
             '@': path.resolve(__dirname, './src'), // '@'를 'src'로 별칭 설정
         },
     },
+    build: {
+        outDir: '../backend/src/main/resources/static/dist',
+        target: 'esnext',
+        modulePreload: false,
+        minify: false,
+        manifest: true,
+        cssCodeSplit: false,
+        assetsInlineLimit: 8096,
+        rollupOptions: {
+            output: {
+                format: 'esm',
+                minifyInternalExports: false,
+            },
+        },
+    },
     server: {
         proxy: {
             '/**': {

@@ -51,7 +51,7 @@ for index_name, ticker in tickers.items():
     try:
         # yfinance를 사용하여 데이터 다운로드
         stock_data = yf.Ticker(ticker)
-        history = stock_data.history(period="5d", interval="1m")
+        history = stock_data.history(period="5d")
         # history = stock_data.history(period="1mo")
         print(index_name)
         # 데이터를 순회하면서 저장

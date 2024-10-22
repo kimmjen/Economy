@@ -1,7 +1,6 @@
 import {Suspense} from "react";
 import {Routes, Route, Navigate} from "react-router-dom";
 import {Dashboard, Auth} from "./layouts/index.js";
-import { DateProvider } from '@/context/DateContext';
 
 function App() {
     // const { t, i18n } = useTranslation();

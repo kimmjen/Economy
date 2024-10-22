@@ -25,3 +25,8 @@ pip install -r requirements.txt
 ```bash
 pip list --format=freeze > requirements.txt
 ```
+
+## 경로 문제시
+```bash
+export PYTHONPATH="절대경로/Economy/data-fastapi/src"
+```

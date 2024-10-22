@@ -16,6 +16,7 @@ const icon = {
 
 export const routes = [
     {
+        title: "Main Page",
         layout: "dashboard",
         pages: [
             {
@@ -47,22 +48,22 @@ export const routes = [
                 path: "/economicIndicators",
                 element: <EconomicIndicators />,
             },
-            {
-                icon: <ListBulletIcon {...icon} />,
-                title: "Finviz Map",
-                layout: "dashboard",
-                name: "finviz",
-                path: "/finviz-map",
-                element: <Finviz />,
-            },
-            {
-                icon: <ListBulletIcon {...icon} />,
-                title: "Youtube Stream",
-                layout: "dashboard",
-                name: "youtube",
-                path: "/youtube",
-                element: <YoutubeStream />,
-            },
+            // {
+            //     icon: <ListBulletIcon {...icon} />,
+            //     title: "Finviz Map",
+            //     layout: "dashboard",
+            //     name: "finviz",
+            //     path: "/finviz-map",
+            //     element: <Finviz />,
+            // },
+            // {
+            //     icon: <ListBulletIcon {...icon} />,
+            //     title: "Youtube Stream",
+            //     layout: "dashboard",
+            //     name: "youtube",
+            //     path: "/youtube",
+            //     element: <YoutubeStream />,
+            // },
         ],
     },
     {

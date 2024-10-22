@@ -6,6 +6,7 @@ from contextlib import asynccontextmanager
 
 from starlette.middleware.cors import CORSMiddleware
 
+from api.finance_api import finance_router
 from util.ticker_processor import main as ticker_processing_main  # ticker_processor에서 main 함수 가져오기
 
 # 로깅 설정
@@ -64,6 +65,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI()
+app.include_router(finance_router, prefix="/api/finance")
 # app = FastAPI(lifespan=lifespan)
 # CORS 설정
 app.add_middleware(

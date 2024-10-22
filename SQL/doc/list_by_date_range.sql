@@ -18,13 +18,13 @@ BEGIN
     RETURN rtn_cursor;
 END;
 $$;
-create function dollar_index$list_by_date_range(_start_date date, _end_date date) returns refcursor
+create function dollar$list_by_date_range(_start_date date, _end_date date) returns refcursor
     language plpgsql
 as
 $$
 DECLARE
     -- 커서 선언
-    rtn_cursor REFCURSOR := 'dollar_index_cursor';  -- 'my_cursor'라는 이름의 커서 선언
+    rtn_cursor REFCURSOR := 'dollar_cursor';  -- 'my_cursor'라는 이름의 커서 선언
 BEGIN
     -- 커서 열기
     OPEN rtn_cursor FOR
