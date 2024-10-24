@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react";
-import { ChartBarIcon, BanknotesIcon } from "@heroicons/react/24/solid";
-import { useCommon } from "@/api/common.js";
+import {ChartBarIcon, BanknotesIcon} from "@heroicons/react/24/solid";
+import {useCommon} from "@/api/common.js";
 import {useDate} from "@/context/DateContext.jsx";
 
 export const useBonds = () => {
-    const { date, handleDateChange } = useDate();  // date와 handleDateChange를 가져옴
+    const {date, handleDateChange} = useDate();  // date와 handleDateChange를 가져옴
     const [bondsData, setBondsData] = useState([]);
-    const url = "http://localhost:8080/api/v1"
+    const url = import.meta.env.VITE_API_URL;
 
     const fetchBondsData = async () => {
         console.log('bondsData', date);

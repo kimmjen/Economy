@@ -1,8 +1,11 @@
 package hello.backend.controller;
 
+import hello.backend.entity.Gold;
 import hello.backend.entity.Sp500;
 import hello.backend.services.Sp500Service;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -19,9 +22,13 @@ public class Sp500Controller {
         this.sp500Service = sp500Service;
     }
 
+    // 페이징된 데이터를 반환하는 엔드포인트
+    @Operation(summary = "Get paginated dollar data")
     @GetMapping
-    public List<Sp500> getAllData() {
-        return sp500Service.getAllData();
+    public Page<Sp500> getPaginatedDollars(
+            @RequestParam(defaultValue = "0") int offset,
+            @RequestParam(defaultValue = "10") int limit) {
+        return sp500Service.getData(offset, limit);
     }
 
     @GetMapping("/{id}")

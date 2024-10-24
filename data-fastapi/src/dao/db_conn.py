@@ -18,7 +18,7 @@ class DBConn:
     def __init__(self, host, port, dbname, user, password):
         if host:
             if not DBConn._instance:
-                self.host = "localhost"
+                self.host = "175.45.194.64"
                 self.port = 5432
                 self.dbname = "economy"
                 self.user = "postgres"

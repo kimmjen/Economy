@@ -5,6 +5,7 @@ import hello.backend.services.DollarService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,10 +23,14 @@ public class DollarController {
         this.dollarService = dollarService;
     }
 
-    @Operation(summary = "Get all dollar data")
+
+    // 페이징된 데이터를 반환하는 엔드포인트
+    @Operation(summary = "Get paginated dollar data")
     @GetMapping
-    public List<Dollar> getAllData() {
-        return dollarService.getAllData();
+    public Page<Dollar> getPaginatedDollars(
+            @RequestParam(defaultValue = "0") int offset,
+            @RequestParam(defaultValue = "10") int limit) {
+        return dollarService.getData(offset, limit);
     }
 
     @GetMapping("/{id}")

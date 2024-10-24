@@ -85,7 +85,7 @@ for index_name, ticker in tickers.items():
                 continue  # 어제 날짜가 아니면 무시
 
             previous_close = get_previous_close(history, date)
-
+            # previous_close = previous_closes[ticker]
             # 변동률 계산
             if previous_close:
                 change_percentage = ((row['Close'] - previous_close) / previous_close) * 100
@@ -93,16 +93,16 @@ for index_name, ticker in tickers.items():
                 change_percentage = 0.0
 
             # 데이터를 리스트에 저장
-            # data_dict[index_name].append({
-            #     'datetime': date,
-            #     'date': date.date(),
-            #     'open_price': row['Open'],
-            #     'close_price': row['Close'],
-            #     'high_price': row['High'],
-            #     'low_price': row['Low'],
-            #     'volume': row['Volume'],
-            #     'change_percentage': change_percentage
-            # })
+            data_dict[index_name].append({
+                'datetime': date,
+                'date': date.date(),
+                'open_price': row['Open'],
+                'close_price': row['Close'],
+                'high_price': row['High'],
+                'low_price': row['Low'],
+                'volume': row['Volume'],
+                'change_percentage': change_percentage
+            })
 
             # 데이터베이스에 저장 (트랜잭션 처리)
             refactoring_to_db(index_name, row, date.date(), change_percentage)

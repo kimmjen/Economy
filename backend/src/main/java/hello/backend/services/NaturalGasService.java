@@ -2,7 +2,10 @@ package hello.backend.services;
 
 import hello.backend.entity.NaturalGas;
 import hello.backend.repository.NaturalGasRepository;
+import hello.backend.services.paginated.PaginatedService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -12,14 +15,20 @@ import java.util.List;
 public class NaturalGasService {
 
     private final NaturalGasRepository naturalGasRepository;
+    private final PaginatedService<NaturalGas> paginatedService;
 
     @Autowired
-    public NaturalGasService(NaturalGasRepository naturalGasRepository) {
+    public NaturalGasService(NaturalGasRepository naturalGasRepository, PaginatedService<NaturalGas> paginatedService) {
         this.naturalGasRepository = naturalGasRepository;
+        this.paginatedService = paginatedService;
     }
 
     public List<NaturalGas> getAllData() {
         return naturalGasRepository.findAll();
+    }
+
+    public Page<NaturalGas> getData(int offset, int limit) {
+        return paginatedService.getPaginatedData(offset, limit, Sort.Direction.DESC, "id", naturalGasRepository);
     }
 
     public NaturalGas getById(Long id) {

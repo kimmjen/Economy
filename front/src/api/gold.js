@@ -5,7 +5,9 @@ import {ChartBarIcon} from "@heroicons/react/24/solid";
 export const useGold = () => {
     const {date, handleDateChange} = useDate();  // date와 handleDateChange를 가져옴
     const [goldData, setGoldData] = useState(null);
-    const url = "http://localhost:8080/api/v1"
+    const url = import.meta.env.VITE_API_URL;;
+    // VITE_API_URL 확인
+    console.log('Current VITE_API_URL:', url);
 
     const fetchGoldData = async () => {
         try {

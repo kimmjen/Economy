@@ -12,7 +12,7 @@ export default defineConfig({
         },
     },
     build: {
-        outDir: '../backend/src/main/resources/static/dist',
+        outDir: '../backend/src/main/resources/static',
         target: 'esnext',
         modulePreload: false,
         minify: false,

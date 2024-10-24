@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
 export const useStatus = () => {
     const [statusData, setStatusData] = useState(null);  // 서버 상태 데이터를 저장
     const [connected, setConnected] = useState(false);  // 연결 상태를 저장
     const [loading, setLoading] = useState(true);  // 로딩 상태를 저장
     const [error, setError] = useState(null);  // 에러 상태를 저장
-    const url = "http://localhost:8080/api/v1"
+    const url = import.meta.env.VITE_API_URL;;
     useEffect(() => {
         const fetchStatus = async () => {
             try {
@@ -35,5 +35,5 @@ export const useStatus = () => {
         fetchStatus();  // 함수 호출하여 상태 가져오기
     }, []);
 
-    return { statusData, connected, loading, error };  // 상태 반환
+    return {statusData, connected, loading, error};  // 상태 반환
 };

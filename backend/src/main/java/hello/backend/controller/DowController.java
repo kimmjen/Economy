@@ -2,7 +2,9 @@ package hello.backend.controller;
 
 import hello.backend.entity.Dow;
 import hello.backend.services.DowService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -20,9 +22,13 @@ public class DowController {
         this.dowService = dowService;
 
     }
+
+    @Operation(summary = "Get paginated dow data")
     @GetMapping
-    public List<Dow> getAllData() {
-        return dowService.getAllData();
+    public Page<Dow> getPaginatedDows(
+            @RequestParam(defaultValue = "0") int offset,
+            @RequestParam(defaultValue = "10") int limit) {
+        return dowService.getData(offset, limit);
     }
 
     @GetMapping("/{id}")

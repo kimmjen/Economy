@@ -1,8 +1,11 @@
 package hello.backend.controller;
 
+import hello.backend.entity.Gold;
 import hello.backend.entity.Nasdaq100;
 import hello.backend.services.Nasdaq100Service;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -18,9 +21,14 @@ public class Nasdaq100Controller {
     public Nasdaq100Controller(Nasdaq100Service nasdaq100Service) {
         this.nasdaq100Service = nasdaq100Service;
     }
+
+    // 페이징된 데이터를 반환하는 엔드포인트
+    @Operation(summary = "Get paginated dollar data")
     @GetMapping
-    public List<Nasdaq100> getAllData() {
-        return nasdaq100Service.getAllData();
+    public Page<Nasdaq100> getPaginatedDollars(
+            @RequestParam(defaultValue = "0") int offset,
+            @RequestParam(defaultValue = "10") int limit) {
+        return nasdaq100Service.getData(offset, limit);
     }
 
     @GetMapping("/{id}")

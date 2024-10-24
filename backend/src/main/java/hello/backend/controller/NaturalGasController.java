@@ -1,8 +1,11 @@
 package hello.backend.controller;
 
+import hello.backend.entity.Gold;
 import hello.backend.entity.NaturalGas;
 import hello.backend.services.NaturalGasService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -19,9 +22,13 @@ public class NaturalGasController {
         this.naturalGasService = naturalGasService;
     }
 
+    // 페이징된 데이터를 반환하는 엔드포인트
+    @Operation(summary = "Get paginated dollar data")
     @GetMapping
-    public List<NaturalGas> getAllData() {
-        return naturalGasService.getAllData();
+    public Page<NaturalGas> getPaginatedDollars(
+            @RequestParam(defaultValue = "0") int offset,
+            @RequestParam(defaultValue = "10") int limit) {
+        return naturalGasService.getData(offset, limit);
     }
 
     @GetMapping("/{id}")

@@ -1,17 +1,16 @@
-import { useState, useEffect } from 'react';
-import { BanknotesIcon, ChartBarIcon, UserPlusIcon, UsersIcon } from "@heroicons/react/24/solid";
+import {useState, useEffect} from 'react';
+import {BanknotesIcon, ChartBarIcon, UserPlusIcon, UsersIcon} from "@heroicons/react/24/solid";
 import {useCommon} from "@/api/common.js";
 import {useDate} from "@/context/DateContext.jsx";
 
 // 날짜 선택 및 서버 상태 처리 훅
 export const useIndices = () => {
 
-    const { date, handleDateChange } = useDate();  // date와 handleDateChange를 가져옴
+    const {date, handleDateChange} = useDate();  // date와 handleDateChange를 가져옴
     const [indicesData, setIndicesData] = useState([]);  // 주가 지수 데이터를 위한 상태
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const url = "http://localhost:8080/api/v1"
-
+    const url = import.meta.env.VITE_API_URL;;
 
 
     // 날짜 기반 주가 지수 데이터를 가져오는 함수

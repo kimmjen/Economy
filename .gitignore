@@ -1,0 +1,7 @@
+
+backend/src/main/resources/application.yml
+backend/src/main/resources/application.yml
+/backend/src/main/resources/static
+front/.env.production
+front/.env.development
+*.development

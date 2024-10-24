@@ -1,4 +1,3 @@
-import threading
 from tqdm import tqdm
 from datetime import timezone
 import yfinance as yf
@@ -38,9 +37,6 @@ ticker_functions = {
     'NG=F': lambda row, date, change_percentage: eco.insert_data('natural_gas', row, date, change_percentage)
 }
 
-# 스레드 동기화를 위한 락 객체
-lock = threading.Lock()
-
 def save_summary_to_db(ticker, row, date, change_percentage):
     retries = 3  # 재시도 횟수
     while retries > 0:
@@ -59,7 +55,7 @@ def save_summary_to_db(ticker, row, date, change_percentage):
                 with open('failed_inserts.txt', 'a') as f:
                     f.write(f"{ticker}, {date}, {change_percentage}, {e}\n")
 
-def process_ticker(ticker, progress_bar):
+def process_ticker(ticker):
     global previous_closes
     try:
         # yfinance를 사용하여 데이터 다운로드
@@ -68,16 +64,15 @@ def process_ticker(ticker, progress_bar):
 
         # 데이터를 순회하면서 저장
         for date, row in history.iterrows():
-            with lock:  # 락을 사용하여 전일 종가 값 업데이트
-                previous_close = previous_closes[ticker]
+            previous_close = previous_closes[ticker]
 
-                # 변동률 계산
-                if previous_close:
-                    change_percentage = ((row['Close'] - previous_close) / previous_close) * 100
-                else:
-                    change_percentage = 0.0
+            # 변동률 계산
+            if previous_close:
+                change_percentage = ((row['Close'] - previous_close) / previous_close) * 100
+            else:
+                change_percentage = 0.0
 
-                previous_closes[ticker] = row['Close']  # 전일 종가 업데이트
+            previous_closes[ticker] = row['Close']  # 전일 종가 업데이트
 
             # 시간대가 포함된 날짜 처리
             date = date.replace(tzinfo=timezone.utc)
@@ -85,25 +80,15 @@ def process_ticker(ticker, progress_bar):
             # 데이터베이스에 저장
             save_summary_to_db(ticker, row, date.date(), change_percentage)
 
-        # 진행 상황 업데이트
-        progress_bar.update(1)
-
     except Exception as e:
         print(f"Failed to fetch data for {ticker}: {e}")
-        progress_bar.update(1)
 
 # 메인 함수
 def main():
-    threads = []
     with tqdm(total=len(tickers)) as progress_bar:
         for index_name, ticker in tickers.items():
-            thread = threading.Thread(target=process_ticker, args=(ticker, progress_bar))
-            threads.append(thread)
-            thread.start()
-
-        # 모든 스레드가 완료될 때까지 대기
-        for thread in threads:
-            thread.join()
+            process_ticker(ticker)
+            progress_bar.update(1)
 
     print("All tickers have been processed.")
 

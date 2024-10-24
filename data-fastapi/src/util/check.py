@@ -9,16 +9,16 @@ eco = Economy.get_instance()
 
 # 티커와 테이블 매칭
 tickers = {
-    'dow': '^DJI',
-    'sp500': '^GSPC',
-    'nasdaq100': '^NDX',
-    'russell2000': '^RUT',
-    '2yr_treasury': '^IRX',
-    '10yr_treasury': '^TNX',
+    # 'dow': '^DJI',
+    # 'sp500': '^GSPC',
+    # 'nasdaq100': '^NDX',
+    # 'russell2000': '^RUT',
+    # '2yr_treasury': '^IRX',
+    # '10yr_treasury': '^TNX',
     'dollar_index': 'DX-Y.NYB',
-    'gold': 'GC=F',
-    'wti_oil': 'CL=F',
-    'natural_gas': 'NG=F'
+    # 'gold': 'GC=F',
+    # 'wti_oil': 'CL=F',
+    # 'natural_gas': 'NG=F'
 }
 
 # 이전 종가 저장용

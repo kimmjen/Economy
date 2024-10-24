@@ -5,8 +5,8 @@ import { BanknotesIcon, ChartBarIcon } from "@heroicons/react/24/solid";
 export const useDollar = () => {
     const { date, handleDateChange } = useDate();  // date와 handleDateChange를 가져옴
     const [dollarData, setDollarData] = useState(null);  // 달러 데이터를 위한 상태
-    const url = "http://localhost:8080/api/v1"
-
+    const url = import.meta.env.VITE_API_URL;;
+    console.log('Current VITE_API_URL:', url);
     const fetchDollarData = async () => {
         try {
             const response = await fetch(`${url}/dollars?date=${date}`);

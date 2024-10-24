@@ -1,0 +1,190 @@
+^DJI, 1992-01-02, 0.0, relation "dow" does not exist
+LINE 1: INSERT INTO dow (date,
+                    ^
+QUERY:  INSERT INTO dow (date,
+                     open_price,
+                     close_price,
+                     high_price,
+                     low_price,
+                     volume,
+                     change_percentage)
+    VALUES (_date,
+            _open_price,
+            _close_price,
+            _high_price,
+            _low_price,
+            _volume,
+            _change_percentage)
+CONTEXT:  PL/pgSQL function "dow$insert"(date,double precision,double precision,double precision,double precision,bigint,double precision) line 3 at SQL statement
+
+^DJI, 1992-01-03, 0.9172897034434727, relation "dow" does not exist
+LINE 1: INSERT INTO dow (date,
+                    ^
+QUERY:  INSERT INTO dow (date,
+                     open_price,
+                     close_price,
+                     high_price,
+                     low_price,
+                     volume,
+                     change_percentage)
+    VALUES (_date,
+            _open_price,
+            _close_price,
+            _high_price,
+            _low_price,
+            _volume,
+            _change_percentage)
+CONTEXT:  PL/pgSQL function "dow$insert"(date,double precision,double precision,double precision,double precision,bigint,double precision) line 3 at SQL statement
+
+^DJI, 1992-01-06, -0.043726451468061846, relation "dow" does not exist
+LINE 1: INSERT INTO dow (date,
+                    ^
+QUERY:  INSERT INTO dow (date,
+                     open_price,
+                     close_price,
+                     high_price,
+                     low_price,
+                     volume,
+                     change_percentage)
+    VALUES (_date,
+            _open_price,
+            _close_price,
+            _high_price,
+            _low_price,
+            _volume,
+            _change_percentage)
+CONTEXT:  PL/pgSQL function "dow$insert"(date,double precision,double precision,double precision,double precision,bigint,double precision) line 3 at SQL statement
+
+^DJI, 1992-01-07, 0.14686887998651166, relation "dow" does not exist
+LINE 1: INSERT INTO dow (date,
+                    ^
+QUERY:  INSERT INTO dow (date,
+                     open_price,
+                     close_price,
+                     high_price,
+                     low_price,
+                     volume,
+                     change_percentage)
+    VALUES (_date,
+            _open_price,
+            _close_price,
+            _high_price,
+            _low_price,
+            _volume,
+            _change_percentage)
+CONTEXT:  PL/pgSQL function "dow$insert"(date,double precision,double precision,double precision,double precision,bigint,double precision) line 3 at SQL statement
+
+^DJI, 1992-01-08, -0.028087446039079717, relation "dow" does not exist
+LINE 1: INSERT INTO dow (date,
+                    ^
+QUERY:  INSERT INTO dow (date,
+                     open_price,
+                     close_price,
+                     high_price,
+                     low_price,
+                     volume,
+                     change_percentage)
+    VALUES (_date,
+            _open_price,
+            _close_price,
+            _high_price,
+            _low_price,
+            _volume,
+            _change_percentage)
+CONTEXT:  PL/pgSQL function "dow$insert"(date,double precision,double precision,double precision,double precision,bigint,double precision) line 3 at SQL statement
+
+^DJI, 1992-01-09, 0.17479003174079685, relation "dow" does not exist
+LINE 1: INSERT INTO dow (date,
+                    ^
+QUERY:  INSERT INTO dow (date,
+                     open_price,
+                     close_price,
+                     high_price,
+                     low_price,
+                     volume,
+                     change_percentage)
+    VALUES (_date,
+            _open_price,
+            _close_price,
+            _high_price,
+            _low_price,
+            _volume,
+            _change_percentage)
+CONTEXT:  PL/pgSQL function "dow$insert"(date,double precision,double precision,double precision,double precision,bigint,double precision) line 3 at SQL statement
+
+^DJI, 1992-01-10, -0.31157501168406293, relation "dow" does not exist
+LINE 1: INSERT INTO dow (date,
+                    ^
+QUERY:  INSERT INTO dow (date,
+                     open_price,
+                     close_price,
+                     high_price,
+                     low_price,
+                     volume,
+                     change_percentage)
+    VALUES (_date,
+            _open_price,
+            _close_price,
+            _high_price,
+            _low_price,
+            _volume,
+            _change_percentage)
+CONTEXT:  PL/pgSQL function "dow$insert"(date,double precision,double precision,double precision,double precision,bigint,double precision) line 3 at SQL statement
+
+^DJI, 1992-01-13, -0.4344398294655415, relation "dow" does not exist
+LINE 1: INSERT INTO dow (date,
+                    ^
+QUERY:  INSERT INTO dow (date,
+                     open_price,
+                     close_price,
+                     high_price,
+                     low_price,
+                     volume,
+                     change_percentage)
+    VALUES (_date,
+            _open_price,
+            _close_price,
+            _high_price,
+            _low_price,
+            _volume,
+            _change_percentage)
+CONTEXT:  PL/pgSQL function "dow$insert"(date,double precision,double precision,double precision,double precision,bigint,double precision) line 3 at SQL statement
+
+^DJI, 1992-01-14, 1.9023057401401477, relation "dow" does not exist
+LINE 1: INSERT INTO dow (date,
+                    ^
+QUERY:  INSERT INTO dow (date,
+                     open_price,
+                     close_price,
+                     high_price,
+                     low_price,
+                     volume,
+                     change_percentage)
+    VALUES (_date,
+            _open_price,
+            _close_price,
+            _high_price,
+            _low_price,
+            _volume,
+            _change_percentage)
+CONTEXT:  PL/pgSQL function "dow$insert"(date,double precision,double precision,double precision,double precision,bigint,double precision) line 3 at SQL statement
+
+^DJI, 1992-01-15, 0.3789060751998562, relation "dow" does not exist
+LINE 1: INSERT INTO dow (date,
+                    ^
+QUERY:  INSERT INTO dow (date,
+                     open_price,
+                     close_price,
+                     high_price,
+                     low_price,
+                     volume,
+                     change_percentage)
+    VALUES (_date,
+            _open_price,
+            _close_price,
+            _high_price,
+            _low_price,
+            _volume,
+            _change_percentage)
+CONTEXT:  PL/pgSQL function "dow$insert"(date,double precision,double precision,double precision,double precision,bigint,double precision) line 3 at SQL statement
+
