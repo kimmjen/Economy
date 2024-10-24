@@ -8,9 +8,7 @@ const YouTubeLive = () => {
     const [error, setError] = useState(null);
     const [embedUrl, setEmbedUrl] = useState('');
 
-    const channelId = 'UC_JJ_NhRqPKcIOj5Ko3W_3w';
-    const API_KEY = 'AIzaSyDuqT-P4dzHV8fQoAtBUvjvAscMsT6kxa8'; // Replace with your actual YouTube API key
-    // const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY; // 환경 변수로 API 키 관리
+
 
     const checkLiveStatus = useCallback(async () => {
         try {
