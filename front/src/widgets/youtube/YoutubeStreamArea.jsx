@@ -7,8 +7,8 @@ const YouTubeLive = () => {
     const [error, setError] = useState(null);
     const [embedUrl, setEmbedUrl] = useState('');  // Use state for embedUrl
 
-    const channelId = 'UC_JJ_NhRqPKcIOj5Ko3W_3w'; // Your channel ID
-    const API_KEY = 'AIzaSyDuqT-P4dzHV8fQoAtBUvjvAscMsT6kxa8'; // Replace with your actual YouTube API key
+    const channelId = import.meta.env.VITE_CHANNEL_ID;
+    const API_KEY = import.meta.env.VITE_API_KEY;
 
     const checkLiveStatus = async () => {
         try {

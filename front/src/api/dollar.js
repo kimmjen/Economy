@@ -6,7 +6,7 @@ export const useDollar = () => {
     const { date, handleDateChange } = useDate();  // date와 handleDateChange를 가져옴
     const [dollarData, setDollarData] = useState(null);  // 달러 데이터를 위한 상태
     const url = import.meta.env.VITE_API_URL;;
-    console.log('Current VITE_API_URL:', url);
+
     const fetchDollarData = async () => {
         try {
             const response = await fetch(`${url}/dollars?date=${date}`);
